@@ -114,7 +114,9 @@ def get_CGcont(line):
     count_dict = cl.Counter(line)
     return count_dict
 
-
+def cal_CGcont(count_dict):
+    return (count_dict['C'] + count_dict['G'])/(count_dict['A'] + count_dict['T']
+                                                + count_dict['C'] + count_dict['G'])
 # In[3]:
 
 
@@ -268,18 +270,21 @@ def extract_bam(bam_path):
     bam_list = []
     bamfile = pysam.AlignmentFile(bam_path, "rb")
     for line in bamfile.fetch():
+        if not line.query:  ## second alignment is omitted
+            continue
         bam_list.append([line.query_name, line.query_length, line.reference_name,
                          line.reference_start, line.reference_end, line.query_alignment_length,
-                         line.flag, line.get_tag('AS'), line.mapping_quality])
+                         line.flag, line.get_tag('AS'), line.mapping_quality,
+                         cal_CGcont(get_CGcont(line.query))])
     bamfile.close()
 
     ## data frame
     bam_dataframe = pd.DataFrame(bam_list)
     bam_dataframe.columns = ['read_name', 'read_length', 'reference_name', 'ref_start',
-                             'ref_end', 'query_alignment_length', 'FALG', 'DP_score', 'MAPQ']
+                             'ref_end', 'query_alignment_length', 'FALG', 'DP_score', 'MAPQ',
+                             'CGcont']
 
     return bam_dataframe
-
 
 # In[9]:
 def align_dist_plot(bam_info, OUTDIR):
@@ -446,6 +451,18 @@ def region_func(region_name, region_interest, bam_info, OUTDIR):
         fig.tight_layout()
 
         fig.savefig('%s/region_MAPQ_dist.png' % (OUTDIR), dpi=300)
+        plt.close(fig)
+
+                ## region CG content boxplot
+        fig = plt.figure(figsize=(6, 6))
+        sns.boxplot(data=info_dfs, x='region_index', y='CGcont', fliersize=.5)
+        plt.xlabel('region interested')
+        plt.ylabel('CG concent')
+        plt.title('The CG content in regions')
+        plt.xticks(rotation=90)
+        fig.tight_layout()
+
+        fig.savefig('%s/region_CGcontent_dist.png' % (OUTDIR), dpi=300)
         plt.close(fig)
 
         return
