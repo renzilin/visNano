@@ -323,7 +323,7 @@ def align_dist_plot(bam_info, OUTDIR):
     fig = plt.figure(figsize=(6, 6))
     sns.boxplot(x="sort_index", y="read_length", data=bam_info)
     plt.xlabel('chromosome')
-    plt.ylabel('num of reads')
+    plt.ylabel('length of reads')
     plt.title('The distribution of alignment length')
     plt.xticks(sort_map_ind, sort_map_chr, rotation='vertical')
     fig.tight_layout()
