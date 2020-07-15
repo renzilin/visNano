@@ -29,7 +29,7 @@ python XXX/scr/visual_nanoReads.py --bam $BAM --bed $BED
 ```bash
 conda create -n biotools
 conda activate biotools
-conda install python=3.8
+conda install python=3.6 # pysam support 3.6
 conda install numpy pandas tqdm seaborn matplotlib
 conda install -c bioconda pysam
 ```
