@@ -70,7 +70,7 @@ def myBamVis(sampleID, bamPath, samtools):
         plt.ylabel('Length (bp)')
         plt.xlabel('Reads No.')
         plt.title("Total reads: {:,}".format(len(alignedLen)))
-        
+        plt.suptitle(sampleID)
         outdir = pathlib.Path('LOG-visnano').mkdir(parents=True, exist_ok=True)
         plt.savefig("LOG-visnano/summary-on-sam-%s.jpg" % (sampleID), dpi=300)
         # plt.show()

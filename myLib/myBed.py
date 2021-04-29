@@ -50,8 +50,8 @@ def myBedVis(sampleID, bedPath, bamPath, samtools):
         ax1 = plt.subplot(121)
         plt.boxplot(lenLst, vert=False, sym='+')
         plt.yticks([i for i in range(1, len(lenLst)+1)], regionNameLst)
-        plt.xlabel('Regions')
-        plt.ylabel('Read Length (bp)')
+        plt.ylabel('Regions')
+        plt.xlabel('Read Length (bp)')
 
 
         ax2   = plt.subplot(122)
@@ -59,13 +59,13 @@ def myBedVis(sampleID, bedPath, bamPath, samtools):
         plt.ylim(-0.5, len(cntLst)-0.3)
         plt.xlim(0, max(cntLst)*1.15)
         plt.xlabel("Reads No.")
-        ply.ylabel("Regions")
+        plt.ylabel("Regions")
 
         for rect in rects:
             wd = rect.get_width()
             plt.text(wd, rect.get_y() + 0.25, '{:,}'.format(wd), va='center')
 
-        
+        plt.suptitle(sampleID)
         outdir = pathlib.Path('LOG-visnano').mkdir(parents=True, exist_ok=True)
         plt.savefig("LOG-visnano/summary-on-bed-%s.jpg" % (sampleID), dpi=300)
         

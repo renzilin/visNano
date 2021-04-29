@@ -86,6 +86,7 @@ def myFqVis(sampleID, fastqPath):
         plt.ylabel('Length (bp)')
         plt.title("Max Length: {:,}".format(max(readLen)))
 
+        plt.suptitle(sampleID)
         outdir = pathlib.Path('LOG-visnano').mkdir(parents=True, exist_ok=True)
         plt.savefig("LOG-visnano/summary-on-fq-%s.jpg" % (sampleID), dpi=300)
         # plt.show()

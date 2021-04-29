@@ -27,7 +27,7 @@ def run_myBamVis(args):
 
 def run_myBedVis(args):
     sampleID, bedPath, bamPath, samtools =  args.s, args.bd, args.b, args.st
-    # myBamVis(sampleID, bamPath, samtools)
+    myBamVis(sampleID, bamPath, samtools)
     myBedVis(sampleID, bedPath, bamPath, samtools)
     return 
 
