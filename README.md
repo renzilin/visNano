@@ -1,37 +1,37 @@
-# Visual_nanoReads
+# visNano 0.1.1
 A tool for making summary of long reads. This tools can handle FASTQ/BAM files.
 
 ## Functions:
-- FASTQ:
-    - total # of bases
-    - total # of reads
-    - length distribution in FASTQ
-    - all reads head/tail score distribution (default: 20 bp)
-    - length distribution with mean phred score
-    - distribution of read mean score
-    - CG content
-- BAM:
-    - distribution of alignment length (read length)
-    - distribution of alignment counts (read count)
-    - distribution of alignment in specific region (REQUIRE a bed file with 4 cols: CHROM START END NAME)
+1. Work on FASTQ file
+
+
+
+2. Work on BAM file
+
+
+
+3. Work on BAM+BED file
+
+
 
 
 ## Usage:
 ```bash
-python XXX/scr/visual_nanoReads.py --fq $FASTQ
-
-python XXX/scr/visual_nanoReads.py --bam $BAM
-
-python XXX/scr/visual_nanoReads.py --bam $BAM --bed $BED
+python visNano.py -h
 ```
 
+Or,
+
+Please see the examply.ipynb
+
+
+
 ## Install:
+
 ```bash
-conda create -n biotools
-conda activate biotools
-conda install python=3.6 # pysam support 3.6
-conda install numpy pandas tqdm seaborn matplotlib
-conda install -c bioconda pysam
+conda create -n visnano
+conda activate visnano
+conda install numpy pandas tqdm matplotlib samtools
 ```
 
 ```
@@ -39,11 +39,10 @@ python packages:
     - numpy
     - pandas
     - tqdm
-    - seaborn
     - matplotlib
-    - pysam
+    - samtools
 ```
 
 ## NOTE:
 This tool is still under development.
-If you want to add some functions, please send a email to me. zilin.bj@gmail.com
+If you want to add some functions, please send a [email](zilin.ren@outlook.com) to me
