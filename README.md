@@ -4,14 +4,15 @@ A tool for making summary of long reads. This tools can handle FASTQ/BAM files.
 ## Functions:
 1. Work on FASTQ file
 
-
+![image1](https://github.com/renzilin/visNano/blob/master/figs/summary-on-fq-F36.jpg)
 
 2. Work on BAM file
 
-
+![image2](https://github.com/renzilin/visNano/blob/master/figs/summary-on-sam-F36.jpg)
 
 3. Work on BAM+BED file
 
+![image3](https://github.com/renzilin/visNano/blob/master/figs/summary-on-bed-F36.jpg)
 
 
 
