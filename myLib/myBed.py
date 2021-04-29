@@ -58,6 +58,8 @@ def myBedVis(sampleID, bedPath, bamPath, samtools):
         rects = plt.barh(regionNameLst, cntLst, height=0.5)
         plt.ylim(-0.5, len(cntLst)-0.3)
         plt.xlim(0, max(cntLst)*1.15)
+        plt.xlabel("Reads No.")
+        ply.ylabel("Regions")
 
         for rect in rects:
             wd = rect.get_width()
